@@ -7,7 +7,7 @@ var player : Node = null
 var dist : int = 128 # distance that petal should keep away from player
 var current_angle : int = 0
 @export var degrees_per_second : int = 90
-@export var follow_speed : float = 10.0 #delay amnt
+@export var follow_speed : float = 22.0 #delay amnt
 var lag_offset : Vector2 = Vector2.ZERO
 
 func update_position() -> void:
