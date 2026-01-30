@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed : int = 300
-@export var petal_num : int = 20
+@export var petal_num : int = 10
 @export var pellet : PackedScene
 
 var left_click_down : bool = false
