@@ -32,7 +32,12 @@ func _physics_process(delta: float) -> void:
 	# movement code
 	var mouse_pos : Vector2 = get_global_mouse_position()
 	var move_angle = $".".position.angle_to_point(mouse_pos)
-	if $".".position.distance_to(mouse_pos) > 48:
+	print(is_on_wall())
+	if $".".position.distance_to(mouse_pos) > 64:
+		velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
+		move_and_slide()
+	elif $".".position.distance_to(mouse_pos) > 5:
+		%Camera2D.position_smoothing_speed = 3 * ($".".position.distance_to(mouse_pos)/64)
 		velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
 		move_and_slide()
 	
@@ -44,12 +49,12 @@ func _physics_process(delta: float) -> void:
 		left_click_down = false
 	
 	# when left click held, radius of pellets increases
-	if left_click_down and stamina > 7:
+	if left_click_down and stamina > 0:
 		stamina -= stamina_drain_per_sec * delta
 		for p in Global.pellet_inventory:
 			p.dist = 200
-	elif left_click_down and not stamina > 7:
-		stamina -= stamina_drain_per_sec * delta
+	elif left_click_down and stamina <= 0:
+		left_click_down = false
 		for p in Global.pellet_inventory:
 			p.dist = 128
 	else:
@@ -71,7 +76,6 @@ func _physics_process(delta: float) -> void:
 	
 	#update after all that movement stuff
 	pp = global_position
-
 
 func _on_player_area_area_entered(area: Area2D) -> void:
 	if area.name == "EnemyArea":
