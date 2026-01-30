@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="wumpus"
-config/features=PackedStringArray("4.4", "Forward Plus")
+run/main_scene="uid://dy14cn142vwu2"
+config/features=PackedStringArray("4.5", "Forward Plus")
 
 [autoload]
 
