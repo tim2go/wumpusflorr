@@ -44,6 +44,7 @@ offset_bottom = -77.0
 color = Color(0, 1, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1413482241]
+unique_name_in_owner = true
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 

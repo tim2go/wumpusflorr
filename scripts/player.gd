@@ -28,7 +28,12 @@ func _physics_process(delta: float) -> void:
 	# movement code
 	var mouse_pos : Vector2 = get_global_mouse_position()
 	var move_angle = $".".position.angle_to_point(mouse_pos)
-	if $".".position.distance_to(mouse_pos) > 48:
+	print(is_on_wall())
+	if $".".position.distance_to(mouse_pos) > 64:
+		velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
+		move_and_slide()
+	elif $".".position.distance_to(mouse_pos) > 5:
+		%Camera2D.position_smoothing_speed = 3 * ($".".position.distance_to(mouse_pos)/64)
 		velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
 		move_and_slide()
 		
