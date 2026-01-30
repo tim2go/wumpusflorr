@@ -11,15 +11,19 @@ const stamina_drain_per_sec : int = 75
 const stamina_recover_per_sec : int = 15
 var stamina : float = max_stamina
 
+var pp : Vector2
+
 @onready var stamina_bar_bg = %StaminaBarBg
 @onready var stamina_bar = %StaminaBar
 
 func _ready() -> void:
 	stamina_bar_bg.size.x = max_stamina
 	stamina_bar.size.x = stamina
+	pp=global_position
 	for i in range(petal_num):
 		var new_pellet = pellet.instantiate() # creates new pellet object
 		new_pellet.current_angle = (360/petal_num) * i # calculates starting angle
+		new_pellet.player = self
 		add_child(new_pellet) # adds pellet to scene
 		Global.pellet_inventory.append(new_pellet) # adds pellet to inventory list
 
@@ -31,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	if $".".position.distance_to(mouse_pos) > 48:
 		velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
 		move_and_slide()
+	
 		
 	# checks if left click is being held down
 	if Input.is_action_just_pressed("left_click"):
@@ -58,6 +63,14 @@ func _physics_process(delta: float) -> void:
 		stamina = 0
 	
 	stamina_bar.size.x = stamina
+	
+	var movement_delta = global_position - pp
+	#displacement thingy in frame
+	for p in Global.pellet_inventory:
+		p.apply_movement_lag(movement_delta, delta)
+	
+	#update after all that movement stuff
+	pp = global_position
 
 
 func _on_player_area_area_entered(area: Area2D) -> void:
