@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxpfkhaiw2duj"]
+[gd_scene format=3 uid="uid://cxpfkhaiw2duj"]
 
 [ext_resource type="Texture2D" uid="uid://ccyb5opcjtisf" path="res://assets/textures/player.png" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://bsro54eqwx8p4" path="res://scenes/pellet.tscn" id="2_dqkch"]
@@ -14,14 +14,14 @@ radius = 67.1193
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 69.0
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" unique_id=1038699706]
 script = ExtResource("2_qhqgy")
 pellet = ExtResource("2_dqkch")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1075075527]
 texture = ExtResource("1_3vyb7")
 
-[node name="StaminaBarBg" type="ColorRect" parent="."]
+[node name="StaminaBarBg" type="ColorRect" parent="." unique_id=1509097764]
 unique_name_in_owner = true
 offset_left = -75.0
 offset_top = -91.0
@@ -29,7 +29,7 @@ offset_right = 75.0
 offset_bottom = -77.0
 color = Color(0, 0, 0, 1)
 
-[node name="StaminaBar" type="ColorRect" parent="."]
+[node name="StaminaBar" type="ColorRect" parent="." unique_id=1827090416]
 unique_name_in_owner = true
 offset_left = -75.0
 offset_top = -91.0
@@ -37,30 +37,30 @@ offset_right = 75.0
 offset_bottom = -77.0
 color = Color(0, 1, 0, 1)
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2088788878]
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=907634427]
 shape = SubResource("CircleShape2D_dqkch")
 
-[node name="PlayerArea" type="Area2D" parent="."]
+[node name="PlayerArea" type="Area2D" parent="." unique_id=2034537842]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" unique_id=646501521]
 shape = SubResource("CircleShape2D_qhqgy")
 
-[node name="left_eye" type="Node2D" parent="."]
+[node name="left_eye" type="Node2D" parent="." unique_id=1037433234]
 position = Vector2(20, -8)
 script = ExtResource("4_fjrip")
 
-[node name="left_pupil" type="Node2D" parent="left_eye"]
+[node name="left_pupil" type="Node2D" parent="left_eye" unique_id=1110227310]
 script = ExtResource("5_smehm")
 
-[node name="right_eye" type="Node2D" parent="."]
+[node name="right_eye" type="Node2D" parent="." unique_id=683923819]
 position = Vector2(-20, -8)
 script = ExtResource("6_ur7pv")
 
-[node name="Node2D" type="Node2D" parent="right_eye"]
+[node name="right_pupil" type="Node2D" parent="right_eye" unique_id=870634101]
 script = ExtResource("7_y4r1p")
 
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_player_area_area_entered"]

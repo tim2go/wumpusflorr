@@ -39,10 +39,14 @@ func _physics_process(delta: float) -> void:
 		left_click_down = false
 	
 	# when left click held, radius of pellets increases
-	if left_click_down and stamina >= 0:
+	if left_click_down and stamina > 7:
 		stamina -= stamina_drain_per_sec * delta
 		for p in Global.pellet_inventory:
 			p.dist = 200
+	elif left_click_down and not stamina > 7:
+		stamina -= stamina_drain_per_sec * delta
+		for p in Global.pellet_inventory:
+			p.dist = 128
 	else:
 		stamina += stamina_recover_per_sec * delta
 		for p in Global.pellet_inventory:
