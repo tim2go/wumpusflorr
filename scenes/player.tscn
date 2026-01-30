@@ -17,6 +17,22 @@ pellet = ExtResource("2_dqkch")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3vyb7")
 
+[node name="StaminaBarBg" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -75.0
+offset_top = -91.0
+offset_right = 75.0
+offset_bottom = -77.0
+color = Color(0, 0, 0, 1)
+
+[node name="StaminaBar" type="ColorRect" parent="."]
+unique_name_in_owner = true
+offset_left = -75.0
+offset_top = -91.0
+offset_right = 75.0
+offset_bottom = -77.0
+color = Color(0, 1, 0, 1)
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
 position_smoothing_speed = 3.0
