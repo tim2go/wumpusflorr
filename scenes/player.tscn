@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cxpfkhaiw2duj"]
+[gd_scene load_steps=7 format=3 uid="uid://cxpfkhaiw2duj"]
 
 [ext_resource type="Texture2D" uid="uid://ccyb5opcjtisf" path="res://assets/textures/player.png" id="1_3vyb7"]
 [ext_resource type="PackedScene" uid="uid://bsro54eqwx8p4" path="res://scenes/pellet.tscn" id="2_dqkch"]
@@ -11,23 +11,23 @@ radius = 67.1193
 [sub_resource type="CircleShape2D" id="CircleShape2D_qhqgy"]
 radius = 69.0
 
-[node name="Player" type="CharacterBody2D" unique_id=1784993980]
+[node name="Player" type="CharacterBody2D"]
 script = ExtResource("2_qhqgy")
 pellet = ExtResource("2_dqkch")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1055450395]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_3vyb7")
 script = ExtResource("4_smehm")
 
-[node name="left_eye" type="Node2D" parent="." unique_id=1803766259]
+[node name="left_eye" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(20, -8)
 
-[node name="right_eye" type="Node2D" parent="." unique_id=593083784]
+[node name="right_eye" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(-20, -8)
 
-[node name="StaminaBarBg" type="ColorRect" parent="." unique_id=1447478566]
+[node name="StaminaBarBg" type="ColorRect" parent="."]
 unique_name_in_owner = true
 offset_left = -75.0
 offset_top = -91.0
@@ -35,7 +35,7 @@ offset_right = 75.0
 offset_bottom = -77.0
 color = Color(0, 0, 0, 1)
 
-[node name="StaminaBar" type="ColorRect" parent="." unique_id=511621450]
+[node name="StaminaBar" type="ColorRect" parent="."]
 unique_name_in_owner = true
 offset_left = -75.0
 offset_top = -91.0
@@ -43,7 +43,7 @@ offset_right = 75.0
 offset_bottom = -77.0
 color = Color(0.93, 0.71300006, 0, 1)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1413482241]
+[node name="Camera2D" type="Camera2D" parent="."]
 unique_name_in_owner = true
 position_smoothing_enabled = true
 position_smoothing_speed = 1.5
@@ -51,7 +51,7 @@ position_smoothing_speed = 1.5
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=703667899]
 shape = SubResource("CircleShape2D_dqkch")
 
-[node name="PlayerArea" type="Area2D" parent="." unique_id=1556877137]
+[node name="PlayerArea" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" unique_id=184435781]
 shape = SubResource("CircleShape2D_qhqgy")
