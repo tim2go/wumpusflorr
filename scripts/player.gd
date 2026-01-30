@@ -55,7 +55,6 @@ func _physics_process(delta: float) -> void:
 	
 	stamina_bar.size.x = stamina
 
-
 func _on_player_area_area_entered(area: Area2D) -> void:
 	if area.name == "EnemyArea":
 		print("player dead")
