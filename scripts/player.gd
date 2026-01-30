@@ -25,6 +25,7 @@ func _ready() -> void:
 		new_pellet.current_angle = (360/petal_num) * i # calculates starting angle
 		new_pellet.player = self
 		add_child(new_pellet) # adds pellet to scene
+		move_child(new_pellet, 1) # changes drawing order of pellets so that stamina bar is rendered above pellets
 		Global.pellet_inventory.append(new_pellet) # adds pellet to inventory list
 
 func _physics_process(delta: float) -> void:
