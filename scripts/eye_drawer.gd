@@ -20,7 +20,7 @@ func _draw():
 	
 	# draw left eye
 	draw_circle(left_eye.position, eye_radius, Color.WHITE)
-	draw_circle(left_eye.position + pupil_offset, pupil_radius, Color.BLACK)
+	draw_circle(left_eye.position + pupil_offset, pupil_radius, Color.RED)
 	
 	# draw right eye
 	draw_circle(right_eye.position, eye_radius, Color.WHITE)
