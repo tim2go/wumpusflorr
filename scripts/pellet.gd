@@ -10,6 +10,10 @@ var current_angle : int = 0
 @export var follow_speed : float = 22.0 #delay amnt
 var lag_offset : Vector2 = Vector2.ZERO
 
+const max_health : int = 50
+var health : int = max_health
+var damage : int = 50
+
 func update_position() -> void:
 	"""
 	Updates position of the petal using current angle and distance

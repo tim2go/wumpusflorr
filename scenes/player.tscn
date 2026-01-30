@@ -41,21 +41,19 @@ offset_left = -75.0
 offset_top = -91.0
 offset_right = 75.0
 offset_bottom = -77.0
-color = Color(0, 1, 0, 1)
+color = Color(0.93, 0.71300006, 0, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1413482241]
 unique_name_in_owner = true
 position_smoothing_enabled = true
-position_smoothing_speed = 3.0
+position_smoothing_speed = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=703667899]
-visible = false
 shape = SubResource("CircleShape2D_dqkch")
 
 [node name="PlayerArea" type="Area2D" parent="." unique_id=1556877137]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerArea" unique_id=184435781]
-visible = false
 shape = SubResource("CircleShape2D_qhqgy")
 
 [connection signal="area_entered" from="PlayerArea" to="." method="_on_player_area_area_entered"]
