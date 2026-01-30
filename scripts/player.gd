@@ -38,7 +38,13 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
 		move_and_slide()
 	elif $".".position.distance_to(mouse_pos) > 5:
+<<<<<<< HEAD
 		%Camera2D.position_smoothing_speed = 3 * ($".".position.distance_to(mouse_pos)/30)
+=======
+		%Camera2D.position_smoothing_speed = 3 * ($".".position.distance_to(mouse_pos)/64)
+		#why is ^this line here? what does it do?
+		#%Camera2D.position_smoothing_enabled = false
+>>>>>>> 01417f308f21d403a20197a7c9de9638f4a9ac71
 		velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
 		velocity = velocity.lerp(Vector2.ZERO, 0.6)
 		move_and_slide()
