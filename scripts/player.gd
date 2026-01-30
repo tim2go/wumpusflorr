@@ -33,12 +33,14 @@ func _physics_process(delta: float) -> void:
 	# movement code
 	var mouse_pos : Vector2 = get_global_mouse_position()
 	var move_angle = $".".position.angle_to_point(mouse_pos)
-	print(is_on_wall())
+	#print(is_on_wall())
 	if $".".position.distance_to(mouse_pos) > 64:
 		velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
 		move_and_slide()
 	elif $".".position.distance_to(mouse_pos) > 5:
 		%Camera2D.position_smoothing_speed = 3 * ($".".position.distance_to(mouse_pos)/64)
+		#why is ^this line here? what does it do?
+		#%Camera2D.position_smoothing_enabled = false
 		velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
 		move_and_slide()
 	
@@ -53,15 +55,16 @@ func _physics_process(delta: float) -> void:
 	if left_click_down and stamina > 0:
 		stamina -= stamina_drain_per_sec * delta
 		for p in Global.pellet_inventory:
-			p.dist = 200
+			#yay smoothing
+			p.dist = lerp(p.dist, 200, delta * 8)
 	elif left_click_down and stamina <= 0:
 		left_click_down = false
 		for p in Global.pellet_inventory:
-			p.dist = 128
+			p.dist = lerp(p.dist, 128, delta * 8)
 	else:
 		stamina += stamina_recover_per_sec * delta
 		for p in Global.pellet_inventory:
-			p.dist = 128
+			p.dist = lerp(p.dist, 128, delta * 8)
 			
 	if stamina > max_stamina:
 		stamina = max_stamina
