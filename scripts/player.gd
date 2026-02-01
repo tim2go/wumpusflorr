@@ -101,10 +101,12 @@ func _physics_process(delta: float) -> void:
 		var goon := load("res://assets/goon.png")
 		var goon2 := load("res://assets/goon2.png")
 		var dialogue: Array[Dialogue] = [
-			Dialogue.new("h- hi, senpai!!", goon),
-			Dialogue.new("i have something to show you... >//<", goon2),
-			Dialogue.new("look!! i- it's my dih!!!", goon2),
-			Dialogue.new("okay byeeeee :3", goon)
+			Dialogue.new("Hello! This is a test of the dialogue system.", goon),
+			Dialogue.new("Look at this silly little face!", goon2),
+			Dialogue.new("Here is a list of things that I like.", goon),
+			Dialogue.new("Anime, manga, light novels, visual novels, and hentai."),
+			Dialogue.new("My favorite one is \"My Little Sister Can't Be This Cute\". I think the plot is really good, and I love gooning to it all day long!", goon2),
+			Dialogue.new("That's all I have to say. Goodbye!")
 		]
 		Global.display_dialogue.emit(dialogue)
 

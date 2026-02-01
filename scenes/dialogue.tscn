@@ -8,12 +8,8 @@
 [node name="CanvasLayer" type="CanvasLayer" unique_id=1611851023]
 script = ExtResource("1_fyky8")
 
-[node name="Sprite" type="Sprite2D" parent="." unique_id=853853259]
-position = Vector2(1258, 443)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_led2e")
-
 [node name="DialogueBox" type="NinePatchRect" parent="." unique_id=231301775]
+visible = false
 offset_top = 600.0
 offset_right = 1538.0
 offset_bottom = 864.0
@@ -26,10 +22,16 @@ patch_margin_bottom = 50
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[node name="Text" type="RichTextLabel" parent="." unique_id=1892615209]
+[node name="Sprite" type="Sprite2D" parent="DialogueBox" unique_id=853853259]
+z_index = -1
+position = Vector2(1258, -157)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_led2e")
+
+[node name="Text" type="RichTextLabel" parent="DialogueBox" unique_id=1892615209]
+layout_mode = 0
 offset_left = 75.0
-offset_top = 650.0
+offset_top = 50.0
 offset_right = 1463.0
-offset_bottom = 835.0
+offset_bottom = 235.0
 theme = ExtResource("2_bfpow")
-text = "jay loves to goon jay loves to goon"
