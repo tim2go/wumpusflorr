@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://cxx644spt8yp8"]
+
+[ext_resource type="FontFile" uid="uid://k0a5auba6tmj" path="res://ui/Ubuntu-Regular.ttf" id="1_udl1o"]
+
+[resource]
+RichTextLabel/font_sizes/normal_font_size = 48
+RichTextLabel/fonts/normal_font = ExtResource("1_udl1o")

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://bd5kke3rryxcm"]
+
+[ext_resource type="Texture2D" uid="uid://bqnp8weoun5xv" path="res://ui/dialogue box patch.png" id="1_3n4vj"]
+[ext_resource type="Script" uid="uid://btnp5fq3v2imp" path="res://scripts/dialogue_handler.gd" id="1_fyky8"]
+[ext_resource type="Theme" uid="uid://cxx644spt8yp8" path="res://ui/ui_theme.tres" id="2_bfpow"]
+[ext_resource type="Texture2D" uid="uid://bv82wllrfdda" path="res://assets/goon.png" id="2_led2e"]
+
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1611851023]
+script = ExtResource("1_fyky8")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=853853259]
+position = Vector2(1258, 443)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_led2e")
+
+[node name="DialogueBox" type="NinePatchRect" parent="." unique_id=231301775]
+offset_top = 600.0
+offset_right = 1538.0
+offset_bottom = 864.0
+texture = ExtResource("1_3n4vj")
+region_rect = Rect2(0, 0, 150, 150)
+patch_margin_left = 50
+patch_margin_top = 50
+patch_margin_right = 50
+patch_margin_bottom = 50
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+
+[node name="Text" type="RichTextLabel" parent="." unique_id=1892615209]
+offset_left = 75.0
+offset_top = 650.0
+offset_right = 1463.0
+offset_bottom = 835.0
+theme = ExtResource("2_bfpow")
+text = "jay loves to goon jay loves to goon"

@@ -33,11 +33,12 @@ func apply_movement_lag(movement_delta: Vector2, delta: float) -> void:
 	lag_offset = lag_offset.lerp(Vector2.ZERO, follow_speed * delta)
 
 func _physics_process(delta: float) -> void:
-	current_angle += degrees_per_second * delta # calculates what the angle should be
-	#keeps angle between 0-360
-	if current_angle >= 360:
-		current_angle -= 360
-	update_position() # updates position
+	if not Global.paused:
+		current_angle += degrees_per_second * delta # calculates what the angle should be
+		#keeps angle between 0-360
+		if current_angle >= 360:
+			current_angle -= 360
+		update_position() # updates position
 	
 # called when any pellet collides with enemy
 func _on_collided_with_enemy(collided_area : Area2D) -> void:
