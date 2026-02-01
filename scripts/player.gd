@@ -9,7 +9,9 @@ var left_click_down : bool = false
 const max_stamina : int = 150
 const stamina_drain_per_sec : int = 75
 const stamina_recover_per_sec : int = 15
+const stamina_recover_punishment_percent : float = 0.8
 var stamina : float = max_stamina
+var stamina_fully_drained := false
 
 var pp : Vector2
 
@@ -49,26 +51,40 @@ func _physics_process(delta: float) -> void:
 		left_click_down = true
 	if Input.is_action_just_released("left_click"):
 		left_click_down = false
-	
+
+		
 	# when left click held, radius of pellets increases
-	if left_click_down and stamina > 0:
+	if left_click_down and stamina > 0 and not stamina_fully_drained:
 		stamina -= stamina_drain_per_sec * delta
 		for p in Global.pellet_inventory:
 			#yay smoothing
 			p.dist = lerp(p.dist, 200, delta * 18)
 	elif left_click_down and stamina <= 0:
+		stamina_fully_drained = true
 		left_click_down = false
 		for p in Global.pellet_inventory:
 			p.dist = lerp(p.dist, 128, delta * 18)
 	else:
-		stamina += stamina_recover_per_sec * delta
+		# punishment is applied to recovery if you drain all of your stamina
+		stamina += stamina_recover_per_sec * delta * \
+			(stamina_recover_punishment_percent if stamina_fully_drained else 1)
 		for p in Global.pellet_inventory:
 			p.dist = lerp(p.dist, 128, delta * 18)
 			
 	if stamina > max_stamina:
 		stamina = max_stamina
+	if stamina == max_stamina:
+		stamina_fully_drained = false
 	if stamina < 0:
 		stamina = 0
+	
+	if stamina_fully_drained:
+		stamina_bar.color = Color(0.7, 0, 0)
+	elif stamina >= max_stamina:
+		stamina_bar.color = stamina_bar.color.lerp(Color(0, 0.8, 0), delta * 3)
+	else:
+		var col = 1 - (stamina / max_stamina)
+		stamina_bar.color = Color(col, 0.8, 0)
 	
 	stamina_bar.size.x = stamina
 	

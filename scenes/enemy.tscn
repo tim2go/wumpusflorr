@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c12ory38327l0"]
+[gd_scene load_steps=5 format=3 uid="uid://c12ory38327l0"]
 
 [ext_resource type="Texture2D" uid="uid://rvn5hpq7dee6" path="res://assets/textures/enemy.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://cw66mrxvnclta" path="res://scripts/enemy.gd" id="1_md0e3"]
@@ -9,18 +9,18 @@ radius = 69.0072
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
 radius = 67.1193
 
-[node name="Enemy" type="CharacterBody2D" unique_id=878562135]
+[node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_md0e3")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1936694061]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_7p1mj")
 
-[node name="EnemyArea" type="Area2D" parent="." unique_id=1026640713]
+[node name="EnemyArea" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea" unique_id=414983732]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
 shape = SubResource("CircleShape2D_md0e3")
 
-[node name="HPBarBg" type="ColorRect" parent="." unique_id=1285356948]
+[node name="HPBarBg" type="ColorRect" parent="."]
 unique_name_in_owner = true
 offset_left = -75.0
 offset_top = -91.0
@@ -28,7 +28,7 @@ offset_right = 75.0
 offset_bottom = -77.0
 color = Color(0, 0, 0, 1)
 
-[node name="HPBar" type="ColorRect" parent="." unique_id=1333897367]
+[node name="HPBar" type="ColorRect" parent="."]
 unique_name_in_owner = true
 offset_left = -75.0
 offset_top = -91.0
@@ -36,7 +36,7 @@ offset_right = 75.0
 offset_bottom = -77.0
 color = Color(1, 0, 0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1152465347]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_4ra3w")
 
 [connection signal="area_entered" from="EnemyArea" to="." method="_on_enemy_area_area_entered"]
