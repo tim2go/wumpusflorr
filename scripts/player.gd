@@ -39,7 +39,7 @@ func _physics_process(delta: float) -> void:
 		if $".".position.distance_to(mouse_pos) > 64:
 			velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
 			move_and_slide()
-		elif $".".position.distance_to(mouse_pos) > 5:
+		elif $".".position.distance_to(mouse_pos) > 2:
 			%Camera2D.position_smoothing_speed = 3 * ($".".position.distance_to(mouse_pos)/30)
 			velocity = Vector2(speed * cos(move_angle), speed * sin(move_angle))
 			velocity = velocity.lerp(Vector2.ZERO, 0.6)

@@ -44,7 +44,6 @@ offset_bottom = -77.0
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1202893106]
 unique_name_in_owner = true
-position_smoothing_enabled = true
 position_smoothing_speed = 1.5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=217623649]
