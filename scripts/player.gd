@@ -4,11 +4,13 @@ extends CharacterBody2D
 @export var petal_num : int = 10
 @export var pellet : PackedScene
 
+@export var tilemap : Node2D
+
 var left_click_down : bool = false
 
-const max_stamina : int = 150
-const stamina_drain_per_sec : int = 75
-const stamina_recover_per_sec : int = 15
+const max_stamina : float = 1500
+const stamina_drain_per_sec : float = 50
+const stamina_recover_per_sec : float = 15
 const stamina_recover_punishment_percent : float = 0.8
 var stamina : float = max_stamina
 var stamina_fully_drained := false
@@ -26,6 +28,7 @@ func _ready() -> void:
 		var new_pellet = pellet.instantiate() # creates new pellet object
 		new_pellet.current_angle = (360/petal_num) * i # calculates starting angle
 		new_pellet.player = self
+		new_pellet.tilemap = tilemap
 		add_child(new_pellet) # adds pellet to scene
 		move_child(new_pellet, 1) # changes drawing order of pellets so that stamina bar is rendered above pellets
 		Global.pellet_inventory.append(new_pellet) # adds pellet to inventory list
@@ -58,18 +61,17 @@ func _physics_process(delta: float) -> void:
 			stamina -= stamina_drain_per_sec * delta
 			for p in Global.pellet_inventory:
 				#yay smoothing
-				p.dist = lerp(p.dist, 200, delta * 18)
+				p.dist = lerp(p.dist, 200, delta * 8)
 		elif left_click_down and stamina <= 0:
 			stamina_fully_drained = true
 			left_click_down = false
 			for p in Global.pellet_inventory:
-				p.dist = lerp(p.dist, 128, delta * 18)
+				p.dist = lerp(p.dist, 128, delta * 8)
 		else:
 			# punishment is applied to recovery if you drain all of your stamina
-			stamina += stamina_recover_per_sec * delta * \
-				(stamina_recover_punishment_percent if stamina_fully_drained else 1)
+			stamina += stamina_recover_per_sec * delta * (stamina_recover_punishment_percent if stamina_fully_drained else 1)
 			for p in Global.pellet_inventory:
-				p.dist = lerp(p.dist, 128, delta * 18)
+				p.dist = lerp(p.dist, 128, delta * 8)
 				
 		if stamina > max_stamina:
 			stamina = max_stamina
@@ -105,7 +107,7 @@ func _physics_process(delta: float) -> void:
 			Dialogue.new("Look at this silly little face!", goon2),
 			Dialogue.new("Here is a list of things that I like.", goon),
 			Dialogue.new("Anime, manga, light novels, visual novels, and _____."),
-			Dialogue.new("My favorite one is \"__ _____ ______ ____ __ ____ ____\". I think the plot is really good, and I love gooning to it all day long!", goon2),
+			Dialogue.new("My favorite one is \"__ _____ ______ ____ __ ____ ____\". I think the plot is really good, and I love _______ to it all day long!", goon2),
 			Dialogue.new("That's all I have to say. Goodbye!")
 		]
 		Global.display_dialogue.emit(dialogue)

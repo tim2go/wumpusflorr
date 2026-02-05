@@ -22,11 +22,9 @@ func _physics_process(delta: float) -> void:
 		if bounce_back_timer > -0.5:
 			bounce_back_timer += bounce_back_time_speed * delta * 2
 			speed = lerp(speed, bounce_back_speed, delta * 10)
-			print(bounce_back_timer)
 		else:
 			speed = lerp(speed, regular_speed, delta * 100)
 		if bounce_back_timer > bounce_back_time_speed:
-			print("b")
 			bounce_back_timer = -1
 		
 		# movement code
