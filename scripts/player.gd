@@ -104,8 +104,8 @@ func _physics_process(delta: float) -> void:
 			Dialogue.new("Hello! This is a test of the dialogue system.", goon),
 			Dialogue.new("Look at this silly little face!", goon2),
 			Dialogue.new("Here is a list of things that I like.", goon),
-			Dialogue.new("Anime, manga, light novels, visual novels, and hentai."),
-			Dialogue.new("My favorite one is \"My Little Sister Can't Be This Cute\". I think the plot is really good, and I love gooning to it all day long!", goon2),
+			Dialogue.new("Anime, manga, light novels, visual novels, and _____."),
+			Dialogue.new("My favorite one is \"__ _____ ______ ____ __ ____ ____\". I think the plot is really good, and I love gooning to it all day long!", goon2),
 			Dialogue.new("That's all I have to say. Goodbye!")
 		]
 		Global.display_dialogue.emit(dialogue)
