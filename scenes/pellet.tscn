@@ -6,7 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bonx2"]
 size = Vector2(32.5269, 32.5269)
 
-<<<<<<< Updated upstream
 [node name="Pellet" type="Sprite2D" unique_id=741313699]
 texture = ExtResource("1_bonx2")
 script = ExtResource("2_dirtd")
@@ -15,23 +14,7 @@ script = ExtResource("2_dirtd")
 unique_name_in_owner = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PelletArea" unique_id=2133349141]
-=======
-[sub_resource type="Curve" id="Curve_imiex"]
-_data = [Vector2(0.0026177987, 0.36648864), 0.0, 1.4, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_imiex"]
-colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 1)
-
-[node name="Pellet" type="Sprite2D" unique_id=1015663185]
-texture = ExtResource("1_bonx2")
-script = ExtResource("2_dirtd")
-
-[node name="PelletArea" type="Area2D" parent="." unique_id=244805367]
-unique_name_in_owner = true
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PelletArea" unique_id=177317647]
->>>>>>> Stashed changes
 position = Vector2(1.19209e-07, 3.57628e-07)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_bonx2")
