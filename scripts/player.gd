@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 var left_click_down : bool = false
 
-const max_stamina : float = 1500
+const max_stamina : float = 150
 const stamina_drain_per_sec : float = 50
 const stamina_recover_per_sec : float = 15
 const stamina_recover_punishment_percent : float = 0.8
