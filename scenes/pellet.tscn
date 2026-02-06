@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://o4j40rew4mul" path="res://assets/textures/basic_petal.png" id="1_bonx2"]
 [ext_resource type="Script" uid="uid://c8wagehfv0gkc" path="res://scripts/pellet.gd" id="2_dirtd"]
-[ext_resource type="Script" uid="uid://n72260lglie1" path="res://scenes/TrailEffect.gd" id="3_imiex"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bonx2"]
 size = Vector2(32.5269, 32.5269)
@@ -36,11 +35,3 @@ unique_name_in_owner = true
 position = Vector2(1.19209e-07, 3.57628e-07)
 rotation = 0.785398
 shape = SubResource("RectangleShape2D_bonx2")
-
-[node name="Line2D" type="Line2D" parent="." unique_id=1391375754]
-top_level = true
-width_curve = SubResource("Curve_imiex")
-default_color = Color(0, 0, 0, 1)
-gradient = SubResource("Gradient_imiex")
-script = ExtResource("3_imiex")
-max_points = 15
