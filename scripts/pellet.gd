@@ -23,6 +23,7 @@ func update_position() -> void:
 	Parameters: None
 	Returns: None
 	"""
+	
 	$".".position = lag_offset + Vector2(dist*cos(deg_to_rad(current_angle)), dist*sin(deg_to_rad(current_angle)))
 
 func _ready() -> void:
@@ -55,7 +56,7 @@ func _physics_process(delta: float) -> void:
 	#check if pellet collides with wall
 	var tile_coords = tilemap.local_to_map(global_position/2)
 	var tile_atlas = tilemap.get_cell_atlas_coords(tile_coords)
-	print(tile_coords)
+	#print(tile_coords)
 	if tile_atlas == Vector2i(1, 0):
 		destroy_pellet()
 
@@ -70,10 +71,15 @@ func destroy_pellet():
 	await get_tree().create_timer(respawn_delay).timeout
 	if not is_inside_tree():
 		return
-	lag_offset = Vector2.ZERO
-	_set_active(true)
-	Global.pellet_inventory.append(self)
-	is_respawning = false
+	var tile_coords = tilemap.local_to_map(global_position/2)
+	var tile_atlas = tilemap.get_cell_atlas_coords(tile_coords)
+	if tile_atlas == Vector2i(1, 0):
+		pass
+	else:
+		lag_offset = Vector2.ZERO
+		_set_active(true)
+		Global.pellet_inventory.append(self)
+		is_respawning = false
 	
 # called when any pellet collides with enemy
 func _on_collided_with_enemy(collided_area : Area2D) -> void:
