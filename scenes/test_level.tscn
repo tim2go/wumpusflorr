@@ -5,14 +5,22 @@
 [ext_resource type="PackedScene" uid="uid://c12ory38327l0" path="res://scenes/enemy.tscn" id="3_j6w7d"]
 [ext_resource type="PackedScene" uid="uid://bd5kke3rryxcm" path="res://scenes/dialogue.tscn" id="4_x4b8f"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_x4b8f"]
+vertices = PackedVector2Array(8, 8, -8, 8, -8, -8, 8, -8)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)])
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j6w7d"]
 texture = ExtResource("1_paw1w")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_x4b8f")
 1:0/0 = 0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_x4b8f"]
 physics_layer_0/collision_layer = 1
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_j6w7d")
 
 [node name="Test Level" type="Node2D" unique_id=1186211715]

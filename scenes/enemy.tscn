@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://c12ory38327l0"]
+[gd_scene format=3 uid="uid://c12ory38327l0"]
 
 [ext_resource type="Texture2D" uid="uid://rvn5hpq7dee6" path="res://assets/textures/enemy.png" id="1_7p1mj"]
 [ext_resource type="Script" uid="uid://cw66mrxvnclta" path="res://scripts/enemy.gd" id="1_md0e3"]
@@ -9,18 +9,22 @@ radius = 69.0072
 [sub_resource type="CircleShape2D" id="CircleShape2D_4ra3w"]
 radius = 67.1193
 
-[node name="Enemy" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" unique_id=1571258475]
+collision_layer = 2
+collision_mask = 3
+motion_mode = 1
+wall_min_slide_angle = 0.0
 script = ExtResource("1_md0e3")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=815439608]
 texture = ExtResource("1_7p1mj")
 
-[node name="EnemyArea" type="Area2D" parent="."]
+[node name="EnemyArea" type="Area2D" parent="." unique_id=1615986616]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyArea" unique_id=1795145558]
 shape = SubResource("CircleShape2D_md0e3")
 
-[node name="HPBarBg" type="ColorRect" parent="."]
+[node name="HPBarBg" type="ColorRect" parent="." unique_id=2010191523]
 unique_name_in_owner = true
 offset_left = -75.0
 offset_top = -91.0
@@ -28,7 +32,7 @@ offset_right = 75.0
 offset_bottom = -77.0
 color = Color(0, 0, 0, 1)
 
-[node name="HPBar" type="ColorRect" parent="."]
+[node name="HPBar" type="ColorRect" parent="." unique_id=1416869432]
 unique_name_in_owner = true
 offset_left = -75.0
 offset_top = -91.0
@@ -36,7 +40,17 @@ offset_right = 75.0
 offset_bottom = -77.0
 color = Color(1, 0, 0, 1)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=338444772]
 shape = SubResource("CircleShape2D_4ra3w")
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1802864558]
+debug_use_custom = true
+debug_path_custom_color = Color(1, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="." unique_id=1890084690]
+process_callback = 0
+wait_time = 0.25
+autostart = true
+
 [connection signal="area_entered" from="EnemyArea" to="." method="_on_enemy_area_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

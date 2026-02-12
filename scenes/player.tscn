@@ -12,6 +12,8 @@ radius = 67.1193
 radius = 69.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1086275422]
+collision_layer = 2
+collision_mask = 3
 script = ExtResource("2_qhqgy")
 pellet = ExtResource("2_dqkch")
 
